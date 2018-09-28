@@ -16,7 +16,7 @@ public:
 
 private:
     std::size_t scoreSolution() const override { return data[pointer]; }
-    void neighbouring_() { pointer++; }
+    void neighbouring_() override { pointer++; }
     std::vector<std::size_t> data;
 
 public:
@@ -37,7 +37,7 @@ private:
         scored = true;
         return data[pointer];
     }
-    void neighbouring_() {
+    void neighbouring_() override {
         pointer++;
         scored = false;
     }

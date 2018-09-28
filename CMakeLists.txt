@@ -40,6 +40,9 @@ target_sources(hxtk
         include/memory/StorageView.hpp
         include/memory/Utils.hpp
 
+        include/automata/TransitionFunction.hpp
+        include/automata/DFA.hpp
+
         include/core/Device.hpp
         include/core/DeviceCPU.hpp
 
@@ -52,6 +55,8 @@ target_sources(hxtk
         src/ruleextraction/RuleSolution.cpp
         src/ruleextraction/RuleExtractor.hpp
         src/ruleextraction/RuleExtractor.cpp
+
+        src/automata/DFA.cpp
 
         src/python/ModuleBindings.cpp
         src/python/RuleExtractorPython.hpp
@@ -76,6 +81,8 @@ target_sources(testsuite
         test/gtest.cpp
         test/threadpool.cpp
         test/memory.cpp
+        test/automata.cpp
+
 
         test/optimisation/discrete.cpp
 

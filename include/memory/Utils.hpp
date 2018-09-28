@@ -2,6 +2,7 @@
 
 #include <array>
 #include <cstdint>
+#include <vector>
 
 namespace hx {
 namespace memory {
@@ -29,6 +30,24 @@ template <typename T, std::size_t Dims>
 constexpr std::array<T, Dims - 1> arrayTail(const std::array<T, Dims> &array) {
     return __internal::arrayTailImpl(array, std::make_index_sequence<Dims>{});
 }
+
+class SmallLookupBimap {
+public:
+    SmallLookupBimap(std::size_t bimapSize)
+        : _lookupBimap1(bimapSize), _lookupBimap2(bimapSize){};
+
+    std::size_t to(std::size_t from) const { return _lookupBimap1[from]; }
+    std::size_t from(std::size_t to) const { return _lookupBimap2[to]; }
+
+    void addPair(std::size_t from, std::size_t to) {
+        _lookupBimap1[from] = to;
+        _lookupBimap2[to] = from;
+    }
+
+private:
+    std::vector<std::size_t> _lookupBimap1;
+    std::vector<std::size_t> _lookupBimap2;
+};
 
 }// namespace memory
 }// namespace hx

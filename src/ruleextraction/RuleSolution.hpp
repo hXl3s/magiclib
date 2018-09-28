@@ -51,6 +51,8 @@ public:
         , _controlClasses(rhs._controlClasses)
         , _randomness(rhs._randomness) {}
 
+    virtual ~RuleSolution() = default;
+
     RuleSolution &operator=(const RuleSolution &rhs) {
         this->_dims = rhs._dims;
         this->_stride = rhs._stride;
